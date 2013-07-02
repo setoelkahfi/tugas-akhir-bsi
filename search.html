@@ -1,0 +1,66 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!-- Meta -->
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+		<title>JS Controlled Expanding Input Box
+
+		</title>
+
+		<style type="text/css" media="screen">
+			input{
+				width:140px;
+				color:#999;
+			}
+		</style>
+	
+	</head>
+	<body>
+		<header>
+			<h1>JS Controlled Expanding Input Box</h1>
+		</header>
+		<div id="main">
+			<form action="form_action.php" method="get">
+				<div>
+					<input type="search" value="Enter Search Value"/>
+				</div>
+			</form>
+			
+			
+		</div>
+		<footer>
+
+		</footer>
+		
+		<!-- js goes here for faster page load -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script type="text/javascript">
+		//global vars
+		var inputWdith = '250px';
+		var inputWdithReturn = '140px';		
+		$(document).ready(function() {
+			$('input').focus(function(){
+				//clear the text in the box.
+				$(this).val(function() {
+		            $(this).val(''); 
+				});
+				//animate the box
+				$(this).animate({
+					width: inputWdith
+				}, 500 )
+			});	
+			
+			$('input').blur(function(){
+				$(this).val('Enter Search Value');
+				$(this).animate({
+					width: inputWdithReturn
+				}, 800 )
+			});
+		});
+		
+		</script>
+	</body>
+
+</html>
