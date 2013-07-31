@@ -627,6 +627,7 @@ elseif ($_GET['module']=='keranjang'){?>
 			<th>Harga</th><th>Sub Total</th><th>Hapus</th></tr>";  
   
 		$no=1;
+		$total = 0;
 		while($r=mysql_fetch_array($sql)){
 			$subtotal    = $r['harga'] * $r['jumlah'];
 			$total       = $total + $subtotal;  
