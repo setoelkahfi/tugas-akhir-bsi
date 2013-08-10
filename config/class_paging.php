@@ -82,7 +82,7 @@ class Paging3{
 	// Fungsi untuk mencek halaman dan posisi data
 	function cariPosisi($batas)
 	{
-		switch($_GET['page'])
+		switch(@$_GET['page'])
 		{
 			case 'category' :
 					if(empty($_GET['cat-page']))
@@ -107,7 +107,7 @@ class Paging3{
 					}
 				break;		
 		}
-		return $posisi;
+		return @$posisi;
 	}
 
 	// Fungsi untuk menghitung total halaman
