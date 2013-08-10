@@ -290,8 +290,8 @@ window.onload=staticbar
         <img src="css/images/payment.gif" alt="" title="header=[Pembayaran yang kami terima] body=[&nbsp;] fade=[on]" width="150" height="30"/>
         </div><!-- end of left_footer -->
         <div class="center_footer">
-        NANO/Computer/Corner &copy;2011.<br />
-        Developed by:<a href="http://setoelkahfi.web.id/" target="_blank" title="header=[http://setoelkahfi.web.id/] body=[&nbsp;] fade=[on]">Seto El Kahfi</a><br />
+        NANO/Computer/Corner &copy;<?php echo date('Y'); ?>.<br />
+        Developed by:<a href="https://facebook.com/setoelkahfi/" target="_blank" title="header=[Seto El Kahfi] body=[&nbsp;] fade=[on]">Seto El Kahfi</a><br />
         </div><!-- end of center_footer -->
         <div class="right_footer">
         <a href="beranda.seto">Beranda</a>
