@@ -132,18 +132,18 @@ elseif ($_GET['module']=='detailproduk'){
 								</div><!-- end prod_box-->
 							</td>
 							<td width='160' valign='top'><b>Dimensi</b><br/>
-											$d[dimensi]<br/><br/><br/>
+											<?php echo $d['dimensi']; ?><br/><br/><br/>
 											<b>Stok</b><br/>
-											$d[stok]<br/><br/><br/>
-											<a href='logic.php?module=keranjang&act=tambah&id=$d[id_produk]' title='header=[Beli sekarang] body=[&nbsp;] fade=[on]'>
+											<?php echo $d['stok']; ?><br/><br/><br/>
+											<a href='logic.php?module=keranjang&act=tambah&id=<?php echo $d['id_produk']; ?>' title='header=[Beli sekarang] body=[&nbsp;] fade=[on]'>
 														<img src='css/images/addtocart.gif' alt='chart' title='' border='0' class='left_bt' /></a>
 							</td>
 							<td valign='top'><b>Berat</b><br/>
-											$d[berat]<br/><br/><br/>
+											<?php echo $d['berat']; ?><br/><br/><br/>
 											<b>Listing sejak</b><br/>
-											$d[tgl_masuk]<br/><br/><br/>
+											<?php echo $d['tgl_masuk']; ?><br/><br/><br/>
 											<b>Ongkos kirim</b><br/>
-											Rp $ongkir<br/><br/>
+											Rp <?php echo $ongkir; ?><br/><br/>
 							</td>
 						</tr>
 					</table>
@@ -394,7 +394,7 @@ elseif ($_GET['module']=='detailkategori'){?>
 	$sql   = "SELECT * FROM produk WHERE id_kategori='$_GET[id]' 
 				ORDER BY id_produk DESC LIMIT $posisi,$batas";		 
 	$hasil = mysql_query($sql);
-	$jumlah = mysql_num_rows($hasil);
+	$jumlah = @mysql_num_rows($hasil);
 	
 	// Apabila ditemukan produk dalam kategori
 	if ($jumlah > 0){
