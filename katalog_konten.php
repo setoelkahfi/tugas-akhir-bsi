@@ -388,12 +388,13 @@ elseif ($_GET['module']=='detailkategori'){?>
   
 	$p      = new Paging3;
 	$batas  = 9;
-	$posisi = $p->cariPosisi($batas);
-  
+	$posisi = $p->cariPosisi($batas) ? $p->cariPosisi($batas) : 1;
+	//var_dump($_GET);
 	// Tampilkan daftar produk yang sesuai dengan kategori yang dipilih
-	$sql   = "SELECT * FROM produk WHERE id_kategori='$_GET[id]' 
-				ORDER BY id_produk DESC LIMIT $posisi,$batas";		 
-	$hasil = mysql_query($sql);
+	$sql   = "SELECT * FROM produk WHERE id_kategori='".$_GET['id']."' 
+				ORDER BY id_produk DESC LIMIT $posisi, $batas";
+	//echo $sql;				
+	$hasil = mysql_query($sql) or die(mysql_error());
 	$jumlah = @mysql_num_rows($hasil);
 	
 	// Apabila ditemukan produk dalam kategori
