@@ -121,7 +121,8 @@ class Paging3{
 	function navHalaman($halaman_aktif, $jmlhalaman)
 	{
 		$link_halaman = "";
-		switch($_GET['page'])
+		$page = isset($_GET['page']) ? $_GET['page'] : 1;
+		switch($page)
 		{
 			case 'category' :
 					// Link halaman 1,2,3, ...

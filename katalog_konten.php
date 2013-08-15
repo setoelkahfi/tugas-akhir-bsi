@@ -431,9 +431,14 @@ elseif ($_GET['module']=='detailkategori'){?>
 		echo "</tr></table><br />";
 		$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM produk WHERE id_kategori='$_GET[id]'"));
 		$jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
-		$linkHalaman = $p->navHalaman($_GET['halkategori'], $jmlhalaman);
-
-		echo "Hal: $linkHalaman<br /><br />";
+		//echo $jmlhalaman;
+		if ($jmlhalaman>1)
+		{
+			$halkategori = isset($_GET['halkategori']) ? $_GET['halkategori'] : 1;;
+			$linkHalaman = $p->navHalaman($halkategori, $jmlhalaman);
+			
+			echo "Hal: $linkHalaman<br /><br />";
+		}
 	}
   else{
     echo "<p align=center>Belum ada produk pada kategori ini.</p>";
