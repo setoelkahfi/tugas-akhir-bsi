@@ -9,7 +9,7 @@ RewriteRule ^keranjang(.*)$ katalog_beranda.php?module=keranjang&id=$1 [L]
 RewriteRule ^selesai-(.*)$ katalog_beranda.php?module=selesaibelanja&id=$1 [L]
 RewriteRule ^kategori-([0-9]+)-(.*)$ katalog_beranda.php?module=detailkategori&id=$1&seo=$2 [L]
 RewriteRule ^kategori-page-([0-9]+)-(.*)$ katalog_beranda.php?module=detailkategori&id=$1&halkategori=$2&seo=$3 [L]
-RewriteRule ^vendor-(.*)$ katalog_beranda.php?module=detailvendor&id=$1 [L]
+RewriteRule ^vendor-([0-9]+)-(.*)$ katalog_beranda.php?module=detailvendor&id=$1&seo=$2 [L]
 RewriteRule ^vendor-page-([0-9]+)-(.*)$ katalog_beranda.php?module=detailvendor&id=$1&halvendor=$2 [L]
 RewriteRule ^search?$ katalog_beranda.php?module=search [L]
 RewriteRule ^search-page-([0-9]+)-(.*)$ katalog_beranda.php?module=detailvendor&id=$1&halvendor=$2 [L]
@@ -18,6 +18,5 @@ RewriteRule ^kontak-kami$ katalog_beranda.php?module=kontak&id=$1 [L]
 RewriteRule ^kontak-aksi$ katalog_beranda.php?module=kontakaksi&id=$1 [L]
 RewriteRule ^all-items\.list$ katalog_beranda.php?module=semuaproduk&id=$1 [L]
 RewriteRule ^all-items\.list-(.*)$ katalog_beranda.php?module=semuaproduk&halproduk=$1 [L]
-
 
 Options All -Indexes

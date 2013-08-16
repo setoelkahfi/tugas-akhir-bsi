@@ -464,11 +464,12 @@ elseif ($_GET['module']=='detailvendor'){?>
   
 	$p      = new Paging3;
 	$batas  = 9;
-	$posisi = $p->cariPosisi($batas);
+	$posisi = $p->cariPosisi($batas) ? $p->cariPosisi($batas) : 1;
   
 	// Tampilkan daftar produk yang sesuai dengan vendor yang dipilih
 	$sql   = "SELECT * FROM produk WHERE id_vendor='$_GET[id]' 
-				ORDER BY id_produk DESC LIMIT $posisi,$batas";		 
+				ORDER BY id_produk DESC LIMIT $posisi, $batas";		 
+	//echo $sql;
 	$hasil = mysql_query($sql);
 	$jumlah = mysql_num_rows($hasil);
 	
