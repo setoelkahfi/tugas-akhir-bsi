@@ -163,29 +163,35 @@ elseif ($_GET['module']=='detailproduk'){
 			</ul>
 			<div id="tabs-2">           
 				<div class='related_prod_box_big'>
+					
 					<table>
-						<tr><td>
-								<div class='pic_prod_box'>
-									<?php
-									/*	$sql=mysql_query("SELECT * FROM produk WHERE id_kategori='$d[nama_kategori]' OR id_vendor='$d[id_vendor]' ORDER BY rand() DESC LIMIT 2");
+						<?php
+										$sql=mysql_query("SELECT * FROM produk WHERE id_kategori='$d[nama_kategori]' OR id_vendor='$d[id_vendor]' ORDER BY rand() DESC LIMIT 3");
 										$numrelated = mysql_num_rows($sql);//AND id_produk!='$d[id_produk]' 
 										if ($numrelated<1) {
-											echo "No related product";
+											echo "<tr><td>No related product</td></tr>";
 										}
 										else {
-											while ($related=mysql_fetch_array($sql)){
+						?>
+						<tr>
+							<?php
+										while ($related=mysql_fetch_array($sql)){
 												$deskripsi 	= nl2br($related['deskripsi']); // membuat paragraf 
 												$isi       	= substr($deskripsi,0,200); // ambil sebanyak 80 karakter
 												$isi       	= substr($deskripsi,0,strrpos($isi," ")); // potong per spasi kalima
 												$h_awal 	= number_format($related['h_awal'],0,",",".");				 
 												$harga 		= number_format($related['harga'],0,",",".");
+							?>
+							<td>
+								<div class='pic_prod_box'>
+									<?php
 												echo "<a href='prod-detail-$related[id_produk]-$related[seo]' title='header=[Detail $related[nama_produk]] body=[&nbsp;] fade=[on]'>
 													<img src='foto_produk/small_$related[gambar]' class='oferta_img' /></a>
 													<br/>";
 												if (!empty($related['h_awal'])) {
 													echo "<span class='reduce'>Rp $h_awal</span><br/>";
 												}
-												echo "<span class='price'> Rp $harga</span>";*/
+												echo "<span class='price'> Rp $harga</span>";
 									?>
 								</div><!--end pic_prod_box-->
 							</td>
@@ -196,8 +202,16 @@ elseif ($_GET['module']=='detailproduk'){
 													<img src='css/images/addtocart.gif' alt='chart' title='' border='0' class='left_bt' /></a>"; 
 									?>		
 								</div><!--end desc_prod-->
-							</td>	
-						</tr>		
+							</td>
+							<?php
+							}
+							
+							?>
+						</tr>
+						<?php
+						}
+						
+						?>
 					</table>
 					<hr>
 				</div><!--related_prod_box_big-->
@@ -507,9 +521,13 @@ elseif ($_GET['module']=='detailvendor'){?>
 		echo "</tr></table>";
 		$jmldata     = mysql_num_rows(mysql_query("SELECT * FROM produk WHERE id_vendor='$_GET[id]'"));
 		$jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
-		$linkHalaman = $p->navHalaman($_GET['halkategori'], $jmlhalaman);
+		if ($jmlhalaman>1)
+		{
+			$halkategori = isset($_GET['halkategori']) ? $_GET['halkategori'] : 1;
+			$linkHalaman = $p->navHalaman($halkategori, $jmlhalaman);
 
-		echo "Hal: $linkHalaman<br /><br />";
+			echo "Hal: $linkHalaman<br /><br />";
+		}
 	}
 	else{
 		echo "<p align=center>Belum ada produk dari vendor ini.</p>";
