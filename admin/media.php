@@ -32,7 +32,7 @@ else{
    				<ul class="left_menu_admin">
         		<li class="odd"><a href="?module=home">&rArr; DASHBOARD </a></li>
         		<?php include "menu.php"; ?>
-        		<li class="odd"><a href="logout.php">&rArr;; LOGOUT</a></li>
+        		<li class="odd"><a href="logout.php">&rArr; LOGOUT</a></li>
         		</ul>         
      		<div class="title_box"></div> 
    		</div><!-- end of left content -->
