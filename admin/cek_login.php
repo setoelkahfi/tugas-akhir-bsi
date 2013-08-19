@@ -15,7 +15,8 @@ $r=mysql_fetch_array($login);
 
 // Apabila username dan password ditemukan
 if ($ketemu > 0){
-	include_once $_SERVER['DOCUMENT_ROOT'] . 'ta_seto/config/securimage/securimage.php';
+	include_once '../config/securimage/securimage.php';
+	//echo 'tes';
 	$securimage = new Securimage();
 	if ($securimage->check($_POST['captcha_code']) == false) {
 		// the code was incorrect
@@ -26,12 +27,8 @@ if ($ketemu > 0){
 		echo "Silahkan <a href='javascript:history.go(-1)'>ulangi lagi.</a>";
 		exit;
 	}
-	else {  
-		@session_register("namauser");
-		@session_register("namalengkap");
-		@session_register("passuser");
-		@session_register("leveluser");
-html
+	else {
+		//echo 'sukses';
 		$_SESSION['namauser']     = $r['username'];
 		$_SESSION['namalengkap']  = $r['nama_lengkap'];
 		$_SESSION['passuser']     = $r['password'];
